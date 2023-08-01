@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: 1%;
+    border-bottom: 3px solid black;
+}
+
+#login-btn {
+    width: 10vw;
+}
+
+#login-btn>a {
+    color: white;
+    font-size: 24px;
+}
+
+main {
+    height: 80vh;
+}
+
+#default-msg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 5vh;
+    height: 100%;
+    text-align: center;
+}
+
+#default-msg p {
+    font-size: 30px;
+}
+
+figure {
+    transition: .6s;
+}
+
+figure:hover {
+    scale: 1.1;
+}
+
+img {
+    width: 30vw;
+    height: 30vw;
+    object-fit: contain;
+}
+
+a {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+footer {
+    text-align: center;
+    border-top: 3px solid black;
+}
