@@ -30,7 +30,6 @@ $(function () {
     const alphabets = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']; ///Arrays
 
     // Get Elements
-    // let nextBtn = document.getElementById('next-btn');
     let answerSec = $('#answer-section');
     let livesCount = $('#lives-left');
     let hintBtn = $('#hint');
@@ -71,7 +70,7 @@ $(function () {
         if (countQuiz == dataset.length - 1) { ///Evaluation / Comparison Operators
             // When user completes all quizes
             closeAlphabets();
-            hintText='';
+            hintText = '';
             answerSec.css('fontSize', '25px')
             answerSec.css('letterSpacing', '1vw')
             answerSec.text(`Complete all Quizes!`);
@@ -121,26 +120,25 @@ $(function () {
 
     function placeAlphabets() { ///Named Functions
         for (var i = 0; i < alphabets.length; i++) {
-            let letterButton = document.createElement('button'); ///Limited Scope Variables
-            letterButton.style.fontSize = '20px';
-            letterButton.innerHTML = alphabets[i];
+            let letterButton = $('<button>');
+            letterButton.css('fontSize', '20px');
+            letterButton.text(alphabets[i]);
 
             // Set onlick property
-            letterButton.onclick = clickAlphabet;
+            letterButton.click(clickAlphabet);
 
             letterBtns.append(letterButton);
         }
     }
 
     function clickAlphabet() {
-        this.onclick = null;
+        this.disabled = true;
         this.setAttribute("class", "clicked");
 
         let isCorrect = false;
         for (let i = 0; i < answerText.length; i++) { ///String Manipulation
             if (answerText[i].toLowerCase() == this.innerHTML) { ///Built-in Methods
                 guessedText = guessedText.slice(0, i) + answerText[i] + guessedText.slice(i + 1);
-                console.log(guessedText);
                 answerSec.text(guessedText);
                 isCorrect = true;
             }
@@ -163,11 +161,11 @@ $(function () {
     }
 
     function closeAlphabets() {
-        let btnArr = document.querySelectorAll('#letters>button');
-        for (let i = 0; i < btnArr.length; i++) {
-            btnArr[i].onclick = null;
-            btnArr[i].setAttribute("class", "clicked");
-        }
+        let btnArr = $('#letters>button');
+        btnArr.each(function () {
+            $(this).prop("disabled", true);
+            $(this).attr("class", "clicked");
+        })
     }
 })
 
