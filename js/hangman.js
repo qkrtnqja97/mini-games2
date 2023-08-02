@@ -35,7 +35,7 @@ $(function () {
     let livesCount = $('#lives-left');
     let hintBtn = $('#hint');
     let hintDiv = $('#hint-text');
-    let letterBtns = document.getElementById('letters');
+    let letterBtns = $('#letters');
 
     // Variables
     let countQuiz = 0;
@@ -47,9 +47,9 @@ $(function () {
     placeAlphabets();
 
     // Start button
-    document.getElementById('start-btn').addEventListener('click', () => { ///Anonymous Function
-        document.getElementById('start-screen').hidden = true;
-        document.getElementById('hangman').hidden = false;
+    $('#start-btn').on('click', () => { ///Anonymous Function
+        $('#start-screen').hide();
+        $('#hangman').show();
         start();
     })
 
@@ -71,6 +71,7 @@ $(function () {
         if (countQuiz == dataset.length - 1) { ///Evaluation / Comparison Operators
             // When user completes all quizes
             closeAlphabets();
+            hintText='';
             answerSec.css('fontSize', '25px')
             answerSec.css('letterSpacing', '1vw')
             answerSec.text(`Complete all Quizes!`);
@@ -79,16 +80,13 @@ $(function () {
             setQuiz(countQuiz);
 
             // Reset alphabets
-            while (letterBtns.firstChild) { ///While Loop
-                letterBtns.removeChild(letterBtns.firstChild);
-            }
+            letterBtns.empty();
             placeAlphabets();
         }
 
         // Reset Hint
-        hintDiv.innerHTML = '';
         hintBtn.show();
-        hintDiv.hidden = true;
+        hintDiv.hide();
     })
 
     function setQuiz(num) { ///Named Functions
@@ -130,7 +128,7 @@ $(function () {
             // Set onlick property
             letterButton.onclick = clickAlphabet;
 
-            letterBtns.appendChild(letterButton);
+            letterBtns.append(letterButton);
         }
     }
 
