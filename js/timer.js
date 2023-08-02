@@ -1,30 +1,52 @@
-document.getElementById("startButton").addEventListener("click", start)
-document.getElementById("stopButton").addEventListener("click", stop)
-document.getElementById("resetButton").addEventListener("click", reset)
+$("#addButton").click(addTime)
 
 let counter; ///global scope
+let clickCounter = 0;
 
 function start() { ///named function
     counter = setInterval(timer, 1000);
-    let startButton = document.getElementById("startButton"); ///limited scope variable
-    startButton.disabled = true;
+
 }
+
+function addTime() {
+    let timer1 = $("#timerNumber").html();
+    timer1 = parseInt(timer1)+10;
+    $("#timerNumber").html(timer1) 
+    countGuess--;
+    livesIndicate();
+    clickCounter++ 
+    if (clickCounter == 1) {
+        $("#addButton").attr("disabled", "true")
+    }
+
+}
+function start() { //named function
+    counter = setInterval(timer, 1000);
+    $("#startButton").attr("disabled", "true"); //limited scope variable
+}
+
+function reset() { //named function
+    stop();
+    $("#timerNumber").html(10);
+    $("#addButton").removeAttr("disabled")
+}
+
+
 function stop() { ///named function
     clearInterval(counter);
-    let startButton = document.getElementById("startButton"); ///limited scope variable
-    startButton.disabled = false;
+    clickCounter = 0
+    $("#addButton").removeAttr("disabled")
+
 }
-function reset() { ///named function
-    stop();
-    document.getElementById("timerNumber").innerHTML = 10;
-}
+
 function timer() { ///named function
-    let timer = document.getElementById("timerNumber").innerHTML; ///limited scope variable
+    let timer = $("#timerNumber").html(); ///limited scope variable
     timer = parseInt(timer); ///built-in-function - in this example, parseInt converts the HTML text to a number
     timer--; ///Arithmetic operator decrement
-    document.getElementById("timerNumber").innerHTML = timer;
+    $("#timerNumber").html(timer);
     if (timer == 0) { ///Comparison operators equal to
         stop();
         livesIndicate();
+        $("#addButton").attr("disabled", "true")
     }
-}
+} 
