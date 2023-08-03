@@ -10,12 +10,23 @@ function initGame(){///Named Functions
     let numberOfPlayer = $('input[name="numberOfPlayer"]:checked').val(); //Limited Scope Variables for check the number of player.
     //reset the keydown Event;
     $(document).unbind();
+    $('.playgame').css('display','none');
+    console.log($('.playgame'));
     if (numberOfPlayer == 'single'){
         singleGame();
-    }else{
-        dualGame();
+        resetGameContent()
     }
+    else if(numberOfPlayer=='dual'){
+        dualGame();
+        resetGameContent()
+    }
+    else(
+        alert("check the user")
+    )
 
+}
+
+function resetGameContent(){
     //Reset the score
     player1_score = 0;
     player2_score = 0;
@@ -165,6 +176,8 @@ function choiceBtn_set(button){///Named Functions
     //button.innerHTML = button.id;
     button.text(button.attr("id"));
     button.css("font-size","18px");
+    button.css("margin-bottom","30px");
+    button.addClass("text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2");//tailwind
     //If some Btn clicked, game will be started.
     /*button.addEventListener('click',function(){
         player1_pick = button.id;
@@ -382,7 +395,9 @@ function dualGame(){
     player2_div.appendChild(player2_h1);
     player2_div.appendChild(player2_p);
     parent.append(player2_div);
-    document.getElementsByClassName('playgame')[0].style.display = 'block';
+    //document.getElementsByClassName('playgame')[0].style.display = 'block';
+    $('.playgame').css('display','block');
+    $('.playgame').css('margin','5px auto');
 }
 
 function playGame(){///Named Functions

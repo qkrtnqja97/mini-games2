@@ -30,7 +30,6 @@ html {
     font-weight: bold;
 }
 
-
 select {
     width: 200px;
     height: 30px;
@@ -48,6 +47,10 @@ select {
     margin: 0 auto;
 }
 
+#explanation h1{
+    font-size: 25px;
+    font-weight: bold;
+}
 #game-content {
     box-sizing: border-box;
     width:80vw;
@@ -58,12 +61,8 @@ select {
 }
 
 .playgame {
-    display:none;
-    width:300px;
-    height:80px;
-    font-size: 20px;
-    font-weight: bold;
     margin:5px auto;
+    display: none;
 }
 
 .layer{
