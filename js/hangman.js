@@ -52,7 +52,6 @@ $('#start-btn').on('click', () => { ///Anonymous Function
     start();
 })
 
-
 // Hint Button
 hintBtn.on('click', () => { ///Input-Output
     hintDiv.text(hintText);
